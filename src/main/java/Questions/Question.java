@@ -3,7 +3,7 @@ package Questions;
 
 public class Question {
 
-    public Question(String question, String[] answer, int correctAnswer) {
+    public Question(String question, String[] answer, String correctAnswer) {
         this.question = question;
         this.answer = answer;
         this.correctAnswer= correctAnswer;
@@ -13,5 +13,5 @@ public class Question {
 
     String[] answer;
 
-    int correctAnswer;
+    String correctAnswer;
 }

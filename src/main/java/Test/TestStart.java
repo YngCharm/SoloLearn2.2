@@ -1,10 +1,8 @@
 package Test;
 
 import Questions.QuestionGenerate;
-
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class TestStart {
@@ -12,10 +10,13 @@ public class TestStart {
     QuestionGenerate questionGenerate = new QuestionGenerate();
 
     Scanner scanner = new Scanner(System.in);
+    PrintWriter out = new PrintWriter(questionGenerate.file);
     int countCorrectAnswer = 0;
 
     public TestStart() throws IOException {
     }
+
+
 
     public void chooseQuestion() throws IOException {
 
@@ -23,15 +24,16 @@ public class TestStart {
 
             questionGenerate.showQuestion(i);
             System.out.println("Введите ответ цифрами от 1 до 4");
-            int inputAnswer = scanner.nextInt();
-            questionGenerate.writer.write(inputAnswer);
+            String inputAnswer = scanner.nextLine();
+            questionGenerate.writer.write( inputAnswer + "\n");
 
-            if (inputAnswer == questionGenerate.correctAnswer) {
+            if (inputAnswer.equals(questionGenerate.correctAnswer)) {
                 countCorrectAnswer++;
             }
         }
         System.out.println("Вы ответили на " + countCorrectAnswer * 10 + " % вопросов.");
         questionGenerate.writer.write("Вы ответили на " + countCorrectAnswer * 10 + " % вопросов.");
+        out.close();
         questionGenerate.writer.close();
     }
 }
