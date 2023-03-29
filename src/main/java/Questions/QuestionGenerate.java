@@ -11,13 +11,14 @@ import java.util.Collections;
 
 public class QuestionGenerate {
 
-
-    public QuestionGenerate() throws IOException {
-    }
-
+    File fileList = new File("E:\\project java\\SoloLearn2.1-master");
+    String contents[] = fileList.list();
     public File file = new File("E:\\project java\\SoloLearn2.1-master\\test1.txt");
     public FileWriter writer = new FileWriter(file);
     static ArrayList<Integer> list = new ArrayList<Integer>();
+
+    public QuestionGenerate() throws IOException {
+    }
 
     public ArrayList<Question> getListQuestion() {
         return listQuestion;
@@ -55,6 +56,7 @@ public class QuestionGenerate {
     Question questionTenth = new Question("Чему равна 4^(-1) часа?",
             new String[]{"20мин", "30мин", "15мин", "45мин"}, "3");
 
+
     public void addQuestions() {
         listQuestion.add(questionFirst);
         listQuestion.add(questionSecond);
@@ -70,20 +72,13 @@ public class QuestionGenerate {
 
     public String correctAnswer;
 
-    int i;
-
     public void generatorNumbers() {
 
-        for (int k = 0; k < 11; k++) {
+        for (int k = 0; k < 10; k++) {
             list.add((k));
 
         }
         Collections.shuffle(list);
-
-        for ( i = 0; i < 10; i++) {
-
-            System.out.println(list.get(i));
-        }
 
     }
 
@@ -91,8 +86,6 @@ public class QuestionGenerate {
     public void showQuestion(int numberOfQuestion) throws IOException {
 
         addQuestions();
-        numberOfQuestion = list.get(i);
-        System.out.println(numberOfQuestion);
         System.out.println(listQuestion.get(list.get(numberOfQuestion)).question + "\n"
                 + Arrays.toString(listQuestion.get(list.get(numberOfQuestion)).answer));
 
